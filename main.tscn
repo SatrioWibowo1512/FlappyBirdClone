@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://csd6g17dlvyt2"]
+
+[ext_resource type="Script" uid="uid://brgjsybly6w6j" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://buclpyrpkd7po" path="res://bird.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://0b62jw5ypnkn" path="res://Background/Background2.png" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://3tglf1y42ev" path="res://pipe_pair.tscn" id="3_1bvp3"]
+[ext_resource type="FontFile" uid="uid://c5528qlp3gy0i" path="res://fonts/Xolonium-Regular.ttf" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://yiqwaew86twg" path="res://Audio/phaseJump5.ogg" id="5_272bh"]
+[ext_resource type="AudioStream" uid="uid://kfkhpoyrj7dh" path="res://Audio/zap2.ogg" id="6_5vw27"]
+[ext_resource type="AudioStream" uid="uid://c5v4fxitah2iw" path="res://Audio/zapThreeToneDown.ogg" id="7_kek77"]
+
+[node name="Main" type="Node2D" unique_id=253951956]
+script = ExtResource("1_1bvp3")
+
+[node name="Backround" type="Sprite2D" parent="." unique_id=972050119]
+position = Vector2(580.5, 322.99997)
+scale = Vector2(4.550781, 2.546875)
+texture = ExtResource("2_5vw27")
+
+[node name="PipePair" parent="." unique_id=1826718271 instance=ExtResource("3_1bvp3")]
+position = Vector2(1200, 300)
+
+[node name="Bird" parent="." unique_id=807724180 instance=ExtResource("1_ig7tw")]
+position = Vector2(200, 300)
+scale = Vector2(5, 5)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=495895490]
+position = Vector2(575, 325)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=945270468]
+
+[node name="GameOverLabel" type="Label" parent="UI" unique_id=1046860448]
+visible = false
+offset_left = 300.0
+offset_top = 250.0
+offset_right = 874.0
+offset_bottom = 387.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_h2yge")
+theme_override_font_sizes/font_size = 100
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1736954723]
+offset_left = 547.0
+offset_top = 5.0
+offset_right = 604.0
+offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("3_h2yge")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="PipeSpawner" type="Timer" parent="." unique_id=566541255]
+wait_time = 2.0
+autostart = true
+
+[node name="FlapSound" type="AudioStreamPlayer2D" parent="." unique_id=1396030062]
+stream = ExtResource("5_272bh")
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="." unique_id=403333761]
+stream = ExtResource("6_5vw27")
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="." unique_id=337937163]
+stream = ExtResource("7_kek77")
+
+[connection signal="timeout" from="PipeSpawner" to="." method="_on_pipe_spawner_timeout"]

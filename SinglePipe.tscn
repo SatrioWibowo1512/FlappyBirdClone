@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ccheiaefx63pe"]
+
+[ext_resource type="Script" uid="uid://b4gkxuauliqxi" path="res://SinglePipe.gd" id="1_bepn3"]
+[ext_resource type="Texture2D" uid="uid://b2pc53qx0y7nr" path="res://Tiles/Style 4/PipeStyle4.png" id="2_hmutw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78010"]
+size = Vector2(80, 400)
+
+[node name="SinglePipe" type="StaticBody2D" unique_id=1752618546]
+script = ExtResource("1_bepn3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=605507385]
+visible = false
+offset_left = -40.0
+offset_top = -200.0
+offset_right = 40.0
+offset_bottom = 200.0
+color = Color(0.03137255, 0.9882353, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627951680]
+shape = SubResource("RectangleShape2D_78010")
+
+[node name="Pipe" type="Sprite2D" parent="." unique_id=1218368199]
+position = Vector2(0.5000024, 0.499995)
+scale = Vector2(2.5937502, 8.3125)
+texture = ExtResource("2_hmutw")
+hframes = 4
+vframes = 2

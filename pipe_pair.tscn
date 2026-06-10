@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://3tglf1y42ev"]
+
+[ext_resource type="Script" uid="uid://k3n3rf5tysp2" path="res://pipe_pair.gd" id="1_bmsf8"]
+[ext_resource type="PackedScene" uid="uid://ccheiaefx63pe" path="res://SinglePipe.tscn" id="1_nep78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmsf8"]
+size = Vector2(80, 200)
+
+[node name="PipePair" type="Node2D" unique_id=1826718271]
+script = ExtResource("1_bmsf8")
+
+[node name="TopPipe" parent="." unique_id=1752618546 instance=ExtResource("1_nep78")]
+position = Vector2(0, -300)
+
+[node name="BottomPipe" parent="." unique_id=2089057890 instance=ExtResource("1_nep78")]
+position = Vector2(0, 300)
+
+[node name="ScoreArea" type="Area2D" parent="." unique_id=130823697]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1807180617]
+shape = SubResource("RectangleShape2D_bmsf8")
+
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
